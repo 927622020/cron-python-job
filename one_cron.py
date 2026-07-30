@@ -35,7 +35,8 @@ try:
     print("Email sent successfully.")
 
 except Exception as e:
-    print(f"Error: {e}")
+    print(f"Error sending email: {e}")
+    raise
 
 ##################################################################################
 ##################################################################################
