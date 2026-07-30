@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 
 # Email configuration
 sender_email = "jeevanantham4213@gmail.com"
-sender_password = "smvedtivdhorkoje"
+sender_password = os.environ["GMAIL_APP_PASSWORD"]
 
 receiver_email = [
     "jeevanantham4213@gmail.com","jeevanantham.r@cavininfotech.com","muthu.g@cavininfotech.com"
