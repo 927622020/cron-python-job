@@ -1,14 +1,15 @@
-name: Run Python Cron Job
+name: Email Cron Test
 
 on:
   schedule:
-    # Runs every 10 minutes (GitHub doesn't guarantee exact timing)
+    # Runs every 10 minutes
     - cron: "*/10 * * * *"
 
+  # Allows you to run it manually
   workflow_dispatch:
 
 jobs:
-  run-script:
+  send-email:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,17 +21,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
       - name: Run Python Script
         env:
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: |
           python one_cron.py
